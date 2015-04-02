@@ -2308,7 +2308,9 @@ struct soap_plugin
   void (*fdelete)(struct soap *soap, struct soap_plugin *p); /* should delete fields of plugin only and not free(p) */
 };
 
+#ifndef WITH_NONAMESPACES
 extern SOAP_NMAC struct Namespace namespaces[];
+#endif
 
 #ifndef WITH_LEAN
 # define soap_get0(soap) (((soap)->bufidx>=(soap)->buflen && soap_recv(soap)) ? EOF : (unsigned char)(soap)->buf[(soap)->bufidx])
